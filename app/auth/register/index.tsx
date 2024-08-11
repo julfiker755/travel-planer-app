@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigation, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Input from '@/components/reuseable/Input/Input';
+import auth from '@/firebase'
+import {createUserWithEmailAndPassword } from "firebase/auth";
 
 
 
@@ -57,7 +59,13 @@ export default function Register(){
 
   const handlefrom=async()=>{
      if(validateForm()){
-       console.log("submit from")
+      createUserWithEmailAndPassword(auth, credentials.email, credentials.password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    console.log(user)
+    // ...
+  })
      }
   }
   return (
