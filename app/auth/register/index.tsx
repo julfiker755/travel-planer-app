@@ -33,12 +33,13 @@ export default function Register(){
  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
  const [updateProfile] = useUpdateProfile(auth);
  
+ useEffect(()=>{
+  navigation.setOptions({
+    headerShown:false
+  })
+},[])
 
-  useEffect(()=>{
-    navigation.setOptions({
-      headerShown:false
-    })
-  },[])
+ 
 
   // handle data
   const handleChange = (name:keyof UserProps, value:string) => {
